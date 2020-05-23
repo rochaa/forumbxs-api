@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0"/>
+    <PackageReference Include="MediatR" Version="8.0.1"/>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Questions.Domain\Questions.Domain.csproj"/>
+    <ProjectReference Include="..\ForumBXS.Infra\ForumBXS.Infra.csproj"/>
+    <ProjectReference Include="..\ForumBXS.Shared\ForumBXS.Shared.csproj"/>
+  </ItemGroup>
+</Project>
