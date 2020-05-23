@@ -25,7 +25,7 @@
 
 > dotnet publish -c Release -o out
 
-> dotnet out/ForumBXS.WebApi.dll
+> dotnet out/ForumBXS.WebAPI.dll
 
 ## Swagger / Open API
 

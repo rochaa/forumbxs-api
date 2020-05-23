@@ -1,12 +1,14 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Questions.Domain.Entities;
+using Posts.Domain.Entities;
 
-namespace Questions.Domain.Repositories
+namespace Posts.Domain.Repositories
 {
     public interface IQuestionRepository
     {
         Task Insert(Question question);
         Task<IEnumerable<Question>> GetAll();
+        Task<Question> GetById(Guid id);
     }
 }

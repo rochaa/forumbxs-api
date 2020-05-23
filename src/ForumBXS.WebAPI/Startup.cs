@@ -13,9 +13,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Questions.Domain.Commands;
-using Questions.Domain.Handlers;
-using Questions.Domain.Repositories;
+using Posts.Domain.Commands;
+using Posts.Domain.Handlers;
+using Posts.Domain.Repositories;
 
 namespace ForumBXS.WebAPI
 {
@@ -50,11 +50,13 @@ namespace ForumBXS.WebAPI
             });
 
             // Commands / Handlers
-            services.AddScoped<IRequestHandler<NewQuestionCommand, CommandResult>, QuestionHandler>();
+            services.AddScoped<IRequestHandler<NewQuestionCommand, CommandResult>, PostHandler>();
+            services.AddScoped<IRequestHandler<NewAnswerCommand, CommandResult>, PostHandler>();
 
             // Banco de dados (Em memória)
             services.AddDbContext<ForumBXSContext>(opt => opt.UseInMemoryDatabase(Settings.ForumBXSDatabaseName));
             services.AddTransient<IQuestionRepository, QuestionRepository>();
+            services.AddTransient<IAnswerRepository, AnswerRepository>();
 
             // Mediator (Em memória)
             services.AddMediatR(typeof(Startup));

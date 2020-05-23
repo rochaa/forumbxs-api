@@ -7,6 +7,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ForumBXS.Shared\ForumBXS.Shared.csproj"/>
-    <ProjectReference Include="..\Questions.Domain\Questions.Domain.csproj"/>
+    <ProjectReference Include="..\Posts.Domain\Posts.Domain.csproj"/>
   </ItemGroup>
 </Project>

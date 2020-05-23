@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Questions.Domain.Entities;
+using Posts.Domain.Entities;
 
 namespace ForumBXS.Infra.Contexts
 {
@@ -8,5 +8,6 @@ namespace ForumBXS.Infra.Contexts
         public ForumBXSContext(DbContextOptions<ForumBXSContext> options) : base(options) { }
 
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
     }
 }

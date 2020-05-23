@@ -1,11 +1,11 @@
 using System;
 using ForumBXS.Shared.Entities;
 
-namespace Questions.Domain.Entities
+namespace Posts.Domain.Entities
 {
-    public class Question : Entity
+    public abstract class Post : Entity
     {
-        public Question(string text, string user)
+        public Post(string text, string user)
         {
             Text = text;
             User = user;

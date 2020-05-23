@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ForumBXS.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
-using Questions.Domain.Entities;
-using Questions.Domain.Repositories;
+using Posts.Domain.Entities;
+using Posts.Domain.Repositories;
 
 namespace ForumBXS.Infra.Repositories
 {
@@ -24,7 +25,15 @@ namespace ForumBXS.Infra.Repositories
 
         public async Task<IEnumerable<Question>> GetAll()
         {
-            return await _context.Questions.ToListAsync();
+            return await _context.Questions
+                .Include(a => a.Answers)
+                .ToListAsync();
+        }
+
+        public async Task<Question> GetById(Guid id)
+        {
+            return await _context.Questions
+                .FirstOrDefaultAsync(q => q.Id == id);
         }
     }
 }
