@@ -6,6 +6,7 @@ using Posts.Domain.Repositories;
 using Posts.Domain.Commands;
 using ForumBXS.Shared.Commands;
 using Posts.Domain.Entities;
+using ForumBXS.Shared;
 
 namespace Posts.Domain.Handlers
 {
@@ -29,14 +30,14 @@ namespace Posts.Domain.Handlers
             // Validar comando (Fail Fast Validation)
             command.Validate();
             if (command.Invalid)
-                return new CommandResult("Dados para criar a pergunta inválidos", command.Notifications);
+                return new CommandResult(Message.NewQuestionInvalidCommand, command.Notifications);
 
             // Criação da pergunta
             var question = new Question(command.Text, command.User);
             await _questionRepository.Insert(question);
 
             // Retornar o resultado
-            return new CommandResult("Pergunta criada com sucesso.", question);
+            return new CommandResult(Message.NewQuestionInsertedSucess, question);
         }
 
         public async Task<CommandResult> Handle(NewAnswerCommand command, CancellationToken ct = default(CancellationToken))
@@ -44,19 +45,19 @@ namespace Posts.Domain.Handlers
             // Validar comando (Fail Fast Validation)
             command.Validate();
             if (command.Invalid)
-                return new CommandResult("Dados para criar a resposta inválidos", command.Notifications);
+                return new CommandResult(Message.NewAnswerInvalidCommand, command.Notifications);
 
             // Verifica se a pergunta existe
             var question = await _questionRepository.GetById(command.QuestionId.Value);
             if (question == null)
-                return new CommandResult("Pergunta não encontrada.");
+                return new CommandResult(Message.QuestionNotFound);
 
             // Criação da resposta
             var answer = new Answer(command.Text, command.User, command.QuestionId.Value);
             await _answerRepository.Insert(answer);
 
             // Retornar o resultado
-            return new CommandResult("Resposta criada com sucesso.", answer);
+            return new CommandResult(Message.NewAnswerInsertedSucess, answer);
         }
     }
 }
