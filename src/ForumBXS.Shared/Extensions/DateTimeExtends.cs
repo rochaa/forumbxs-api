@@ -4,8 +4,9 @@ namespace System
     {
         public static DateTime BR(this DateTime value)
         {
-            var cstZone = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
-            return TimeZoneInfo.ConvertTimeFromUtc(value, cstZone);
+            var differenceWithUtc = -3;
+            var dateBR = value.AddHours(differenceWithUtc);
+            return dateBR;
         }
     }
 }

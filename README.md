@@ -5,7 +5,7 @@
 2. Registration of answers
 
 ## Pattners
-> Simple -> DDD, TDD, CQRS, Mediator
+> Simple -> DDD, CQRS, Mediator
 
 ## Requirements
 
