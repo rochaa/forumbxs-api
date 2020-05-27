@@ -17,7 +17,7 @@
 
 > docker build -f Dockerfile -t forumbxs:latest .
 
-> docker run --rm -d -p 3001:80 forumbxs
+> docker run --rm -d -p 3333:80 forumbxs
 
 ## Local tests (dotnet)
 

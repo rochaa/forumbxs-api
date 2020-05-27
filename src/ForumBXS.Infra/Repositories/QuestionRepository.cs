@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ForumBXS.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,7 @@ namespace ForumBXS.Infra.Repositories
         {
             return await _context.Questions
                 .Include(a => a.Answers)
+                .OrderByDescending(d => d.CreationDate)
                 .ToListAsync();
         }
 
