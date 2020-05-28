@@ -52,6 +52,8 @@ namespace ForumBXS.WebAPI
             // Commands / Handlers
             services.AddScoped<IRequestHandler<NewQuestionCommand, CommandResult>, PostHandler>();
             services.AddScoped<IRequestHandler<NewAnswerCommand, CommandResult>, PostHandler>();
+            services.AddScoped<IRequestHandler<LikeQuestionCommand, CommandResult>, PostHandler>();
+            services.AddScoped<IRequestHandler<LikeAnswerCommand, CommandResult>, PostHandler>();
 
             // Banco de dados (Em memória)
             services.AddDbContext<ForumBXSContext>(opt => opt.UseInMemoryDatabase(Settings.ForumBXSDatabaseName));
@@ -61,7 +63,6 @@ namespace ForumBXS.WebAPI
             // Mediator (Em memória)
             services.AddMediatR(typeof(Startup));
             services.AddScoped<IMediatorHandler, Bus>();
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

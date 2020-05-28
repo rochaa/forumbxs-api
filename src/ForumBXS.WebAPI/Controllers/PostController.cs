@@ -62,5 +62,33 @@ namespace ForumBXS.WebAPI.Controllers
 
             return Ok(result);
         }
+
+        [Route("question/{id}/like")]
+        [HttpPost]
+        public async Task<ActionResult> QuestionLike(
+            [FromRoute] Guid id)
+        {
+            var command = new LikeQuestionCommand { QuestionId = id };
+            var result = await _bus.SendCommand(command);
+
+            if (!result.Sucess)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [Route("answer/{id}/like")]
+        [HttpPost]
+        public async Task<ActionResult> AnswerLike(
+            [FromRoute] Guid id)
+        {
+            var command = new LikeAnswerCommand { AnswerId = id };
+            var result = await _bus.SendCommand(command);
+
+            if (!result.Sucess)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
     }
 }

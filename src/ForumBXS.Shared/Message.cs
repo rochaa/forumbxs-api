@@ -16,5 +16,8 @@ namespace ForumBXS.Shared
         public static string NewAnswerInvalidCommand = "Dados para criar a resposta inválidos";
         public static string NewAnswerInsertedSucess = "Resposta criada com sucesso.";
         public static string QuestionNotFound = "Pergunta não encontrada.";
+        public static string AnswerNotFound = "Resposta não encontrada.";
+        public static string LikeInvalidCommand = "Dados para criar a curtida inválidos.";
+        public static string LikedSucess = "Curtiu com sucesso. rs";
     }
 }

@@ -24,6 +24,12 @@ namespace ForumBXS.Infra.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task Update(Question question)
+        {
+            _context.Entry(question).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<Question>> GetAll()
         {
             return await _context.Questions

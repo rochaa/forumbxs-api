@@ -24,6 +24,12 @@ namespace ForumBXS.Infra.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task Update(Answer answer)
+        {
+            _context.Entry(answer).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<Answer> GetById(Guid id)
         {
             return await _context.Answers
