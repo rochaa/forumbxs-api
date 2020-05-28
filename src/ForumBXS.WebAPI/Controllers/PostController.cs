@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using ForumBXS.Shared.Bus;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,16 @@ namespace ForumBXS.WebAPI.Controllers
             [FromServices] IQuestionRepository repository)
         {
             var result = await repository.GetAll();
+            return Ok(result);
+        }
+
+        [Route("question/{id}")]
+        [HttpGet]
+        public async Task<ActionResult> QuestionGetById(
+            [FromRoute] Guid id,
+            [FromServices] IQuestionRepository repository)
+        {
+            var result = await repository.GetById(id);
             return Ok(result);
         }
 

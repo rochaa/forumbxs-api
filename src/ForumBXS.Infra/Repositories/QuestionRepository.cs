@@ -35,6 +35,7 @@ namespace ForumBXS.Infra.Repositories
         public async Task<Question> GetById(Guid id)
         {
             return await _context.Questions
+                .Include(a => a.Answers)
                 .FirstOrDefaultAsync(q => q.Id == id);
         }
     }
